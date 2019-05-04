@@ -17,7 +17,7 @@ node {
     stage('Install node') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-        sh 'apt-get install nodejs'
+        sh 'sudo apt-get install nodejs'
 
 
     }
