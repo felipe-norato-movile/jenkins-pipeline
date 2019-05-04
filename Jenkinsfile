@@ -12,6 +12,11 @@ properties(
         )
     ]
 )
+agent {
+  docker {
+    image 'node:8-alpine'
+  }
+}
 node {
     def app
 
@@ -24,13 +29,6 @@ node {
         //env.git_commit_id = sh returnStdout: true, script: 'git rev-parse HEAD'
         //env.git_commit_id_short = env.git_commit_id.take(7)
         //currentBuild.displayName = "#${currentBuild.number}-${env.git_commit_id_short}"
-    }
-
-    stage('Build image') {
-        /* This builds the actual image; synonymous to
-         * docker build on the command line */
-        app = docker.image("node:8-alpine")
-
     }
 
     stage('Test image') {
