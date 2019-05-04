@@ -1,8 +1,13 @@
 pipeline {
 
-  agent { dockerfile true }
-
+  agent node
   stages {
+
+    agent {
+      docker {
+        image 'node:8-alpine'
+      }
+    }
 
     stage('Fetch dependencies') {
 
