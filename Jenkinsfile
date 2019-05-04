@@ -1,13 +1,12 @@
 pipeline {
 
-  agent none
-  stages {
-
     agent {
       docker {
         image 'node:8-alpine'
       }
     }
+  stages {
+
 
     stage('Fetch dependencies') {
 
