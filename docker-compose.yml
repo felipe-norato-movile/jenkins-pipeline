@@ -1,0 +1,11 @@
+version: "3.1"
+
+services:
+  app_testing:
+    build: .
+    command: ng serve --source-map=true --watch=true --optimization=false --host 0.0.0.0
+    ports:
+      - "4200:4200"
+    volumes:
+      - .:/app_testing
+      - /app_testing/node_modules

@@ -13,6 +13,8 @@ properties(
     ]
 )
 node {
+    def app
+
     stage('Checkout') {
         //disable to recycle workspace data to save time/bandwidth
         deleteDir()
@@ -23,6 +25,23 @@ node {
         //env.git_commit_id_short = env.git_commit_id.take(7)
         //currentBuild.displayName = "#${currentBuild.number}-${env.git_commit_id_short}"
     }
+
+    stage('Build image') {
+        /* This builds the actual image; synonymous to
+         * docker build on the command line */
+
+        app = docker.build("node:8-alpine")
+    }
+
+    stage('Test image') {
+        /* Ideally, we would run a test framework against our image.
+         * For this example, we're using a Volkswagen-type approach ;-) */
+
+        app.inside {
+            sh 'echo "Tests passed"'
+        }
+    }
+
 
     stage('NPM Install') {
         withEnv(["NPM_CONFIG_LOGLEVEL=warn"]) {
