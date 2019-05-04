@@ -14,10 +14,10 @@ node {
         //currentBuild.displayName = "#${currentBuild.number}-${env.git_commit_id_short}"
     }
 
-    stage('Build image') {
+    stage('Install node') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-        sh 'docker build -d node:8-alpine'
+        sh 'apt-get install nodejs'
 
 
     }
