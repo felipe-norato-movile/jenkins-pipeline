@@ -1,12 +1,8 @@
 pipeline {
 
-    agent {
-      docker {
-        image 'node:8-alpine'
-      }
-    }
-  stages {
+  agent { dockerfile true }
 
+  stages {
 
     stage('Fetch dependencies') {
 
@@ -15,7 +11,6 @@ pipeline {
         stash includes: 'node_modules/', name: 'node_modules'
       }
     }
-
 
     stage('Build') {
 
