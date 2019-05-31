@@ -1,24 +1,17 @@
 pipeline {
 
-  agent { dockerfile true }
+  //agent { dockerfile true }
 
   stages {
 
     stage('Fetch dependencies') {
 
       steps {
-        sh 'yarn'
-        stash includes: 'node_modules/', name: 'node_modules'
+        sh 'echo "testing"'
+        
       }
     }
 
-    stage('Build') {
-
-      steps {
-        unstash 'node_modules'
-        sh 'yarn build'
-        stash includes: 'dist/', name: 'dist'
-      }
-    }
+    
   }
 }
