@@ -1,15 +1,10 @@
 pipeline {
-
+  agent any
   stages {
-
-    stage('Fetch dependencies') {
-
+    stage ('Initialize') {
       steps {
-        sh 'echo "testing"'
-        
+        echo 'Placeholder.'
       }
     }
-
-    
   }
 }
